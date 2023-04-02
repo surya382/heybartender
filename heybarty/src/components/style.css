@@ -1,0 +1,84 @@
+
+.nav{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+   
+}
+.home{
+    position: relative;
+    top: 100px;
+   color: rgb(108, 168, 48);
+   
+}
+
+
+
+.modes:hover{
+    cursor: pointer;
+    
+}
+
+.startbut:hover{
+
+    width: 150px;
+    height: 70px;
+    font-size: larger;
+    font-weight: bold;
+    
+    color: white;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+.bartimg:hover{
+
+    border-radius: 80px 0px 80px 0px;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
+
+.arrow{
+    position: absolute;
+    left:94%;
+    top:52px;
+}
+
+.try{
+    position: relative;
+   top: 5px;
+   right: 8px;
+    
+   
+}
+
+
+
+
+/* .half-color {
+	
+	position:relative;
+	font-size:80px;
+	display:inline-block;
+ 	color:teal;
+ 	font-family: 'Chilanka', cursive;
+}
+.half-color:before{
+	content: attr(attribute);
+	color:rgb(16, 192, 163);
+	position:absolute;
+	top:0;
+	left:0;
+	height:60%;
+	overflow:hidden;
+   
+} */
+
+@media screen and (max-width: 500px){
+    
+    .bottomnav{
+        display: none;
+    }
+}
