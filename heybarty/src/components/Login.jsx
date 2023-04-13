@@ -94,7 +94,14 @@ const handleSubmit=async(e)=>{
 
           login(res);
             
-          navigate("/");
+              
+          if(res.admin){
+            navigate("/admin")
+          }
+          else{
+            navigate("/");
+          }
+         
 
          }
 

@@ -4,6 +4,9 @@ import Home from './Home'
 import Login from './Login'
 import Signup from './Signup'
 import SingleDrink from './SingleDrink'
+import Private from './Private'
+import Adminpanel from './Admin/Adminpanel'
+import Addcocktail from './Admin/Addcocktail'
 
 const Allroute = () => {
   return (
@@ -12,7 +15,10 @@ const Allroute = () => {
              <Route path='/' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
-            <Route path='/singledrink' element={<SingleDrink/>}/>
+            <Route path='/:id' element={<SingleDrink/>}/>
+
+            <Route path='/admin' element={<Private><Adminpanel/></Private>}/>
+            <Route path='/addcocktail' element={<Private><Addcocktail/></Private>}/>
         </Routes>
     </div>
   )

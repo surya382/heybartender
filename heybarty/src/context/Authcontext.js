@@ -8,18 +8,19 @@ export const AuthcontextProvider=({children})=>{
 
     const [authstate,setauth]=useState({
         token:cred.token || null,
-        name:cred.name || ""
+        name:cred.name || "",
+        admin:cred.admin || false
     });
 
     const login=(credential)=>{
 
-        setauth({...authstate,token:credential.token,name:credential.name});
+        setauth({...authstate,token:credential.token,name:credential.name,admin:credential.admin});
         localStorage.setItem("cred",JSON.stringify(credential));
 
     }
 
     const logout=()=>{
-        setauth({...authstate,token:null,name:""});
+        setauth({...authstate,token:null,name:"",admin:false});
         localStorage.removeItem("cred");
     }
 

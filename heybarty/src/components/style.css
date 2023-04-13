@@ -8,7 +8,7 @@
 .home{
     position: relative;
     top: 100px;
-   color: rgb(108, 168, 48);
+  
    
 }
 
@@ -57,24 +57,7 @@
 
 
 
-/* .half-color {
-	
-	position:relative;
-	font-size:80px;
-	display:inline-block;
- 	color:teal;
- 	font-family: 'Chilanka', cursive;
-}
-.half-color:before{
-	content: attr(attribute);
-	color:rgb(16, 192, 163);
-	position:absolute;
-	top:0;
-	left:0;
-	height:60%;
-	overflow:hidden;
-   
-} */
+
 
 @media screen and (max-width: 500px){
     

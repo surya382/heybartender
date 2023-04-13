@@ -8,10 +8,10 @@ import Bar from './components/Bar';
 function App() {
   return (
     <div className="App">
-      {/* <Navbar/> */}
-      {/* <Allroute/> */}
+      <Navbar/>
+      <Allroute/>
      
-    <Bar/>
+    {/* <Bar/> */}
 
     </div>
   );
