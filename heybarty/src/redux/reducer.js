@@ -1,4 +1,4 @@
-import { cock_get,single_cock} from "./actionTypes";
+import { cock_get,single_cock,delete_cock} from "./actionTypes";
 
 const init={
     loading:false,
@@ -26,6 +26,17 @@ export const reducer=(state=init,action)=>{
         case single_cock:{
             return {
                 ...state,loading:false,single:action.payload
+            }
+        }
+
+        case delete_cock:{
+
+            let del=state.cocktail.filter((el)=>{
+                return el._id!==action.payload
+            });
+            
+            return {
+                ...state,loading:false,cocktail:del
             }
         }
 

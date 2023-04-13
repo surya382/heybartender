@@ -6,7 +6,7 @@ import { useState } from 'react'
 import {useDispatch,useSelector} from "react-redux"
 import { Link } from 'react-router-dom';
 import { Authcontext } from '../context/Authcontext';
-import { getCocktail } from '../redux/action';
+import { deletecock, getCocktail } from '../redux/action';
 import Pagination from './Barcontent/Pagination';
 import Skeletons from './Barcontent/Skeleton';
 import Topnav from './Barcontent/Topnav';
@@ -47,7 +47,10 @@ const Bar = () => {
   setq(query);
  }
 
- 
+ const remove=(id)=>{
+
+  dispatch(deletecock(id));
+ }
 
   return (
     <div>
@@ -68,7 +71,7 @@ const Bar = () => {
               <Text>{el.base.slice(0,1).toUpperCase() + el.base.slice(1)} Based Cocktail</Text>
               <Text>Approx. selling price:- <b>{el.price} ₹</b></Text>
               </Link>
-              {authstate.admin && <Button>Delete</Button>}
+              {authstate.admin && <Button onClick={()=>remove(el._id)}>Delete</Button>}
             </Box>
             )
           }

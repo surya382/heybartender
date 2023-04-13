@@ -59,7 +59,7 @@ const Addcocktail = () => {
         setloading(true);
         try{
 
-          let res=await fetch("http://localhost:4500/drink/addcocktail",{
+          let res=await fetch("https://bartender.onrender.com/drink/addcocktail",{
             method:'POST',
             body:JSON.stringify({...cock,price:Number(cock.price),name:cock.name.toLowerCase()}),
             headers:{

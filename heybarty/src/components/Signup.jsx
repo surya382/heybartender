@@ -61,7 +61,7 @@ export default function Signup() {
       
         try{
         
-          let res=await fetch("http://localhost:4500/user/register",{
+          let res=await fetch("https://bartender.onrender.com/user/register",{
             method:'POST',
             body:JSON.stringify({...user,mobile:Number(user.mobile)}),
             headers:{

@@ -71,7 +71,7 @@ const handleSubmit=async(e)=>{
 
     try{
 
-      let res=await fetch("http://localhost:4500/user/login",{
+      let res=await fetch("https://bartender.onrender.com/user/login",{
         method:'POST',
         body:JSON.stringify(user),
         headers:{
