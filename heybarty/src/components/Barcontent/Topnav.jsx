@@ -31,12 +31,17 @@ const Topnav = ({sortby,filtby,search}) => {
         <option value="tequila">Tequila Based</option>
       </Select>
       </Box>
-
+         
+      
       <Box display="flex">
        <Input type="text" value={query} onChange={(e)=>setquery(e.target.value)}/>
        <Button onClick={searchfor}  color={'white'} backgroundColor="#f22d65" _hover={{backgroundColor:"#f22d65"}}>Search</Button>
 
       </Box>
+      
+       
+     
+
 
       <Box>
         <Select onChange={(e)=>sortby(e.target.value)}>
