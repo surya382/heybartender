@@ -141,10 +141,12 @@ const handleSubmit=async(e)=>{
       align={'center'}
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}>
+        
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+      
         <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Log in to your account</Heading>
-         
+          
         </Stack>
         <Box
           rounded={'lg'}
@@ -203,9 +205,18 @@ const handleSubmit=async(e)=>{
               </Text>
             </Stack>
 
+            <Box>
+           <Text fontWeight="bold">Admin credentials:-</Text>
+           <Text>Email:- Admin@gmail.com</Text>
+           <Text>Password:- shaktiman</Text>
+          </Box>
+
           </Stack>
         </Box>
       </Stack>
+
+     
+
     </Flex>
   );
 }
