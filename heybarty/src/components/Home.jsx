@@ -30,13 +30,13 @@ const Home = () => {
         authstate.token?<Bar/>:
       
 
-       <Flex  color="rgb(108, 168, 48)" width="100%" justifyContent='space-evenly' flexDirection={{sm:"column-reverse",md:"column-reverse",lg:"row"}}>
+       <Flex className='homeContainer' color="rgb(108, 168, 48)" width="100%" justifyContent='space-evenly' flexDirection={{sm:"column",md:"column",lg:"row"}}>
 
         <Box  className='imgbox' p={5} width={{sm:"100%", md:"100%" , lg:"50%"}} >
-              <Image className='bartimg' height="450px" borderRadius="0px 80px 0px 80px" src='https://img.freepik.com/premium-photo/young-handsome-man-looking-desperate-frustrated-stressed-cocktail-bartender_1194-375700.jpg' width="100%" alt='brokem link'/>   
+              <Image className='bartimg' src='https://img.freepik.com/premium-photo/young-handsome-man-looking-desperate-frustrated-stressed-cocktail-bartender_1194-375700.jpg' width="100%" alt='brokem link'/>   
         </Box>
 
-        <Box className='content' textAlign="center" p={5} width="50%" >
+        <Box className='content' textAlign="center" p={5} width="50%" margin="auto">
            <Heading>Are you getting frustrated with the guest demands?</Heading>
            <Heading mt={12}>Try exploring worldclass cocktail recipes and solutions for your problems here</Heading>
        

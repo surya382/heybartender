@@ -31,7 +31,9 @@
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
 }
-
+.bartimg{
+    border-radius: 0px 80px 0px 80px;
+}
 .bartimg:hover{
 
     border-radius: 80px 0px 80px 0px;
@@ -63,5 +65,13 @@
     
     .bottomnav{
         display: none;
+    }
+    .homeContainer{
+        flex-direction: column;
+    }
+    .bartimg{
+        aspect-ratio: 3/2;
+        object-fit: contain;
+        border-radius: 50%;
     }
 }
