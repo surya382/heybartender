@@ -8,9 +8,21 @@ const Topnav = ({sortby,filtby,search}) => {
 
 
   const searchfor=()=>{
-    if(query!==""){
+   
       search(query.toLowerCase());
+    
+  }
+
+  const debouncing =(val)=>{
+    let id;
+    if(id){
+      clearTimeout(id);
     }
+     setquery(val);
+    setTimeout(() => {
+      search(val.toLowerCase());
+
+    }, 2000);
   }
 
   return (
@@ -21,7 +33,7 @@ const Topnav = ({sortby,filtby,search}) => {
        
       <Select onChange={(e)=>filtby(e.target.value)}>
       <option value="">Filter by base</option>
-        <option value="">All</option>
+        {/* <option value="">All</option> */}
         <option value="whiskey">Whiskey Based</option>
         <option value="rum">Rum Based</option>
         <option value="brandy">Brandy Based</option>
@@ -34,7 +46,7 @@ const Topnav = ({sortby,filtby,search}) => {
          
       
       <Box display="flex">
-       <Input type="text" value={query} onChange={(e)=>setquery(e.target.value)}/>
+       <Input type="text" value={query} placeholder="search by cocktail name" onChange={(e)=>debouncing(e.target.value)}/>
        <Button onClick={searchfor}  color={'white'} backgroundColor="#f22d65" _hover={{backgroundColor:"#f22d65"}}>Search</Button>
 
       </Box>

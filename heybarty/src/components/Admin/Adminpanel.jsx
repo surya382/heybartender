@@ -15,11 +15,11 @@ const Adminpanel = () => {
   const cock=useSelector((state)=>state.cocktail);
   const load=useSelector((state)=>state.loading);
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    dispatch(getCocktail(page));
+  //   dispatch(getCocktail(page));
    
-    },[page]);
+  //   },[page]);
 
 
   return (
