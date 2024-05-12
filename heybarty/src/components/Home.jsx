@@ -36,11 +36,11 @@ const Home = () => {
               <Image className='bartimg' src='https://img.freepik.com/premium-photo/young-handsome-man-looking-desperate-frustrated-stressed-cocktail-bartender_1194-375700.jpg' width="100%" alt='brokem link'/>   
         </Box>
 
-        <Box className='content' textAlign="center" p={5} width="50%" margin="auto">
+        <Box className='content' textAlign="center" p={5} margin="auto">
            <Heading>Are you getting frustrated with the guest demands?</Heading>
            <Heading mt={12}>Try exploring worldclass cocktail recipes and solutions for your problems here</Heading>
        
-             <Button onClick={redirect} _hover={{backgroundColor:"#f22d65"}} width="120px" height="50px" backgroundColor="white" className='startbut' color="#f22d65" border="1px solid #f22d65" mt={14}>Start for free</Button>
+             <Button onClick={redirect} _hover={{backgroundColor:"#f22d65"}} width="120px" height="40px" backgroundColor="white" className='startbut' color="#f22d65" border="1px solid #f22d65" mt={14}>Start for free</Button>
         </Box>
         
         </Flex> 
