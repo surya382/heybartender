@@ -32,7 +32,6 @@ export default function Signup() {
   }
 
   const [user, setuser] = useState(initial);
-
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast()
   const [formErrors, setFormErrors] = useState({});
