@@ -14,7 +14,7 @@ import {
   useColorModeValue,
   FormHelperText,
   useToast,
- 
+
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
@@ -23,83 +23,83 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
 
-  const initial={
-          name:"",
-          email:"",
-          password:"",
-          dob:"",
-          mobile:""
+  const initial = {
+    name: "",
+    email: "",
+    password: "",
+    dob: "",
+    mobile: ""
   }
 
-  const [user,setuser]=useState(initial);
+  const [user, setuser] = useState(initial);
 
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast()
   const [formErrors, setFormErrors] = useState({});
   const [loading, setloading] = useState(false);
-  const navigate=useNavigate(); 
+  const navigate = useNavigate();
 
-  const handlechange=(e)=>{
+  const handlechange = (e) => {
 
-    const {name,value}=e.target;
-
-    setuser({...user,[name]:value});
-          
-    setFormErrors(validate(user));
-   
+    const { name, value } = e.target;
+    setuser(prevUser => {
+      const updatedUser = { ...prevUser, [name]: value };
+      setFormErrors(validate(updatedUser));
+      return updatedUser;
+    });
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-   
-    
-      if(Object.keys(formErrors).length === 0){
-             
-        setloading(true);
 
-      
-        try{
-        
-          let res=await fetch("https://bartender.onrender.com/user/register",{
-            method:'POST',
-            body:JSON.stringify({...user,mobile:Number(user.mobile)}),
-            headers:{
-              "Content-Type":"application/json"
-            }
-          })
-          res=await res.json();
-        
-          
-          setloading(false);
-          toast({
-            title: `${res.msg}`,
-            position:"top",
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-          })
 
-          navigate("/login");
-        }
-        catch(err){
-          setloading(false);
 
-          toast({
-            title: 'Signup failed try again',
-            position:"bottom",
-            status: 'error',
-            duration: 3000,
-            isClosable: true,
-          })
-          console.log(err)
-        }    
+    if (Object.keys(formErrors).length === 0) {
 
-        }
+      setloading(true);
+
+
+      try {
+
+        let res = await fetch("https://bartender.onrender.com/user/register", {
+          method: 'POST',
+          body: JSON.stringify({ ...user, mobile: Number(user.mobile) }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        res = await res.json();
+
+
+        setloading(false);
+        toast({
+          title: `${res.msg}`,
+          position: "top",
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
+
+        navigate("/login");
+      }
+      catch (err) {
+        setloading(false);
+
+        toast({
+          title: 'Signup failed try again',
+          position: "bottom",
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        })
+        console.log(err)
+      }
+
+    }
 
   }
 
-  
+
 
 
   const validate = (values) => {
@@ -111,7 +111,7 @@ export default function Signup() {
     if (!values.name) {
       errors.name = "Username is required!";
     }
-    
+
 
 
     if (!values.email) {
@@ -125,32 +125,29 @@ export default function Signup() {
       errors.password = "Password is required";
     } else if (values.password.length < 4) {
       errors.password = "Password must be more than 4 characters";
-    } 
+    }
     else if (values.password.length > 10) {
       errors.password = "Password cannot exceed more than 10 characters";
     }
 
-    if(!values.dob){
-      errors.dob="DOB is required";
-    }else if(inputDate.getTime() >= currentDate.getTime()){
-        errors.dob="Not a valid DOB"
+    if (!values.dob) {
+      errors.dob = "DOB is required";
+    } else if (inputDate.getTime() >= currentDate.getTime()) {
+      errors.dob = "Not a valid DOB"
     }
 
-    if(!values.mobile){
-         errors.mobile="Mobile number is required"
+    if (!values.mobile) {
+      errors.mobile = "Mobile number is required"
     }
-    else if(values.mobile.length!==9){
-      errors.mobile="Mobile number should contain 10 digits"
+    else if (values.mobile.length !== 10) {
+      errors.mobile = "Mobile number should contain 10 digits"
     }
-
-   
-   
 
     return errors;
   }
 
-  
- console.log(user)
+
+  //  console.log(user)
 
   return (
     <Flex pt={14}
@@ -163,7 +160,7 @@ export default function Signup() {
           <Heading fontSize={'4xl'} textAlign={'center'}>
             Sign up
           </Heading>
-         
+
         </Stack>
         <Box
           rounded={'lg'}
@@ -172,25 +169,25 @@ export default function Signup() {
           p={8}>
           <Stack spacing={4}>
             <HStack>
-             
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>Username</FormLabel>
-                  <Input type="text" name='name' value={user.name} onChange={handlechange}/>
-                  <FormHelperText textAlign="left" color="red">{formErrors.name}</FormHelperText>
-                </FormControl>
-            
-             
+
+              <FormControl id="firstName" isRequired>
+                <FormLabel>Username</FormLabel>
+                <Input type="text" name='name' value={user.name} onChange={(e) => handlechange(e)} />
+                <FormHelperText textAlign="left" color="red">{formErrors.name}</FormHelperText>
+              </FormControl>
+
+
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" name='email' value={user.email} onChange={handlechange}/>
+              <Input type="email" name='email' value={user.email} onChange={(e) => handlechange(e)} />
               <FormHelperText textAlign="left" color="red">{formErrors.email}</FormHelperText>
             </FormControl>
-            
+
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} name="password" value={user.password} onChange={handlechange}/>
+                <Input type={showPassword ? 'text' : 'password'} name="password" value={user.password} onChange={(e) => handlechange(e)} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -204,27 +201,27 @@ export default function Signup() {
               <FormHelperText textAlign="left" color="red">{formErrors.password}</FormHelperText>
 
               <HStack mt={1}>
-              <Box>
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>DOB</FormLabel>
-                  <Input type="date" name='dob' value={user.dob} onChange={handlechange}/>
-                  <FormHelperText textAlign="left" color="red">{formErrors.dob}</FormHelperText>
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl id="lastName" isRequired>
-                  <FormLabel>Mobile Number</FormLabel>
-                  <Input type="number"  name='mobile' value={user.mobile} onChange={handlechange}/>
-                  <FormHelperText textAlign="left" color="red">{formErrors.mobile}</FormHelperText>
-                </FormControl>
-              </Box>
-            </HStack>
+                <Box>
+                  <FormControl id="firstName" isRequired>
+                    <FormLabel>DOB</FormLabel>
+                    <Input type="date" name='dob' value={user.dob} onChange={(e) => handlechange(e)} />
+                    <FormHelperText textAlign="left" color="red">{formErrors.dob}</FormHelperText>
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl id="lastName" isRequired>
+                    <FormLabel>Mobile Number</FormLabel>
+                    <Input type="number" name='mobile' value={user.mobile} onInput={(e) => handlechange(e)} />
+                    <FormHelperText textAlign="left" color="red">{formErrors.mobile}</FormHelperText>
+                  </FormControl>
+                </Box>
+              </HStack>
 
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
-              onClick={handleSubmit}
-              isLoading={loading}
+                onClick={handleSubmit}
+                isLoading={loading}
                 loadingText="Submitting"
                 size="lg"
                 bg={'blue.400'}
@@ -235,11 +232,11 @@ export default function Signup() {
                 }}>
                 Sign up
               </Button>
-              
+
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link to="/login"><span style={{color:"#f22d65"}}>Login</span></Link>
+                Already a user? <Link to="/login"><span style={{ color: "#f22d65" }}>Login</span></Link>
               </Text>
             </Stack>
           </Stack>
